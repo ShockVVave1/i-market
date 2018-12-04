@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="fd29d401-0131-4960-b4cc-7f970826ad2e" name="i-market" url="http://localhost">
+        <fileTransfer port="0" mountedRoot="E:\XAMPP\htdocs" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>
