@@ -17,7 +17,7 @@ if($_SERVER['APPLICATION_ENV'] == 'development'){
 }
 
 //3. Старт сессии
-
+session_start();
 
 //2. Подключение файлов системы
 define('ROOT',dirname(__FILE__));
@@ -28,3 +28,6 @@ require_once (ROOT.'/library/Autoload.php');
 
 
 //4. Вызов Router
+
+$router = new Router();
+$router ->run();

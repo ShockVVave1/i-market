@@ -11,27 +11,23 @@
  * @param $class_name
  * Автозагрузчик классов
  */
-function component_autoloader($class_name){
+function component_autoload($class_name){
 
     //возможные дирректории классов
     $array_paths = array(
-        'application/controllers/',
-        'application/models/',
-        'application/views/',
-        'library'
+        '/application/controllers/',
+        '/application/models/',
+        '/application/views/',
+        '/library/'
 
     );
 
-    try{
-        foreach ($array_paths as $path){
-            $path = ROOT.$path.$class_name.'.php';
+    foreach ($array_paths as $path){
+        $path = ROOT.$path.$class_name.'.php';
 
-            if(is_file($path)){
-                require_once ($path);
-            }
+        if(is_file($path)){
+            require_once ($path);
         }
-    }catch (Exception $e){
-        echo $e->getMessage();
     }
 }
 
