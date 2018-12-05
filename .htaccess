@@ -1,2 +1,12 @@
 
+AddDefaultCharset utg-8
+
+RewriteEngine on
+RewriteBase /i-market
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.*)$ index.php
+
 SetEnv APPLICATION_ENV "development"

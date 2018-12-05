@@ -9,7 +9,9 @@
 
 //Массив рутов
 $routes = array(
-    'Руты  ' => '-  тут'
+    '([a-z]+)/([a-z]+)((?:[?][a-z]+[=][a-z A-Z 0-9]+)+)'=>'$1/$2',
+    'buy'=>'buy/index',
+    'i-market'=>'buy/index'
 );
 
 return $routes;
