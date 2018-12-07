@@ -11,7 +11,11 @@
 $routes = array(
     '([a-z]+)/([a-z]+)((?:[?][a-z]+[=][a-z A-Z 0-9]+)+)'=>'$1/$2',
     'buy'=>'buy/index',
-    'i-market'=>'buy/index'
+    /**
+     * TODO при переносе на норма хостинг поменять '-market' на '/'
+     */
+    '-market'=>'site/index'
+
 );
 
 return $routes;

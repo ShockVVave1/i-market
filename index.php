@@ -26,8 +26,6 @@ require_once (ROOT.'/library/Autoload.php');
 
 //3. Установка соединения с БД
 
-
 //4. Вызов Router
-
 $router = new Router();
 $router ->run();

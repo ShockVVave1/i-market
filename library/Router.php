@@ -29,7 +29,9 @@ class Router
         }
    }
 
-   //Получение uri запроса
+   /**
+    * Получение uri запроса
+    */
    public function getUri(){
 
        if(!empty($_SERVER['REQUEST_URI'])){
