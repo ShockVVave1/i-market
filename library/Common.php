@@ -15,30 +15,39 @@ class Common{
 
     /**
      * @return array
-     * Получение стилей и скриптов из header
+     * Получение стилей и скриптов для $where, где $where - Foot или Head
      */
-    static function getHead(){
+    static function getScriptsSrc($where){
+
+        try {
+            switch ($where) {
+                case 'Foot':
+                    {
+                        $use_func = 'array_pop';
+                        break;
+                    }
+                case 'Head':
+                    {
+                        $use_func = 'array_shift';
+                        break;
+                    }
+                default:
+                    {
+                        throw new Exception('Параметр функции \'getScriptsSrc\' не верный');
+                }
+            }
+        }catch (Exception $e){
+            return array('css' => array(),'js'=>array());
+        }
+
         $mass = require (ROOT.'/application/configs/css_params.php');
-        $styles = !empty($mass) ? array_shift( $mass): array();
+        $styles = !empty($mass) ? $use_func( $mass): array();
         $mass = require (ROOT.'/application/configs/js_params.php');
-        $scripts = !empty($mass) ? array_shift( $mass): array();
+        $scripts = !empty($mass) ? $use_func( $mass): array();
 
         return array('css' => $styles,'js'=>$scripts);
     }
 
-    /**
-     * @return array
-     * Получение стилей и скрипов из footer
-     */
-    static function getFoot(){
-        $mass = require (ROOT.'/application/configs/css_params.php');
-        $styles = !empty($mass) ? array_pop( $mass): array();
-        $mass = require (ROOT.'/application/configs/js_params.php');
-        $scripts = !empty($mass) ? array_pop( $mass): array();
-
-
-        return array('css' => $styles,'js'=>$scripts);
-    }
 
     /**
      * @param $where - либо 'Head' или 'Foot'
@@ -47,7 +56,7 @@ class Common{
     static  function  getScripts($where){
 
         $func = "get$where";
-        $$where = self::$func();
+        $$where = self::getScriptsSrc($where);
 
         if(!is_null($$where['css'])){
             foreach ($$where['css'] as $style => $styleSrc){?>

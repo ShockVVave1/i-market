@@ -14,7 +14,7 @@ $pubCssDir = '/i-market/public/css';
 return array(
     'header' => array(
         'bootstrap' => $pubCssDir.'/bootstrap/bootstrap.min.css',
-        'ownstyle' => $pubCssDir.'/ownstyle.css'
+        'mystyle' => $pubCssDir.'/mystyle.css'
     ),
     'footer' => array(
 

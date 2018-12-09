@@ -1,0 +1,21 @@
+
+CREATE DATABASE imarket_db CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE SCHEMA im_category;
+
+CREATE TABLE im_category
+(
+    id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    name varchar(30) NOT NULL,
+    description text,
+    parent_cat int,
+    sort_order int DEFAULT 0 NOT NULL,
+    status boolean DEFAULT false ,
+    child_cat text
+);
+CREATE UNIQUE INDEX im_category_id_uindex ON im_category (id);
+CREATE UNIQUE INDEX im_category_name_uindex ON im_category (name);
+
+INSERT INTO `im_category` (`id`, `name`, `description`, `parent_cat`, `sort_order`, `status`, `child_cat`) VALUES (1, 'Ноутбуки', 'Описание ноутбуков', NULL, '0', '1', NULL);
+INSERT INTO `im_category` (`id`, `name`, `description`, `parent_cat`, `sort_order`, `status`, `child_cat`) VALUES (2, 'Смартфоны', 'Описание смартфонов', NULL, '0', '1', NULL);
+INSERT INTO `im_category` (`id`, `name`, `description`, `parent_cat`, `sort_order`, `status`, `child_cat`) VALUES (3, 'Планшетов', 'Описание Планшетов', NULL, '0', '1', NULL);
