@@ -15,11 +15,19 @@ require_once (ROOT.'/application/views/components/header.php'); ?>
                 сайд бар
             </aside>
             <div class="col-lg-9 col-sm-12">
-                контент
+                <?php foreach ($categories as $category){?>
+                    <div class="cat_cart clearfix">
+                        <h3><a href="<?php echo $getcurrentUrl.$category['tag']; ?>"><?php echo $category['name']; ?></a></h3>
+                        <div>
+                            <a class='cat_img' href="">
+                                <img src="<?php echo $category['image']; ?>" alt="<?php echo $category['name']; ?>">
+                            </a>
+                            <p><?php echo $category['description']; ?></p>
+                        </div>
+                    </div>
+                <?php } ?>
             </div>
         </div>
-
-
     </div>
 </main>
 

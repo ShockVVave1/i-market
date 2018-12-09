@@ -14,6 +14,7 @@ $routes = array(
     /**
      * TODO при переносе на норма хостинг поменять '-market' на '/'
      */
+    '([a-z]+)'=>'/category/$1',
     '-market'=>'site/index'
 
 );
