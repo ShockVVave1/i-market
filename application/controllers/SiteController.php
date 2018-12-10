@@ -9,10 +9,14 @@
 class SiteController extends Controller {
 
     public function actionIndex($array){
+        $status = '1';
+        $sort_order='ASC';
+        $parent_cat = 0;
 
         extract($array);
-        $getCatParams = array('status'=>'1', 'sort_order' => 'ASC','parent_cat'=>0);
-        $getcurrentUrl = preg_replace('\?[a-z A-z 0-9]+','',$_SERVER['REQUEST_URI']);
+
+        $getCatParams = array('status'=>$status, 'sort_order' => $sort_order,'parent_cat'=>$parent_cat);
+        $getcurrentUrl = $_SERVER['REQUEST_URI'];//'\?[a-z A-z 0-9]+'
         $categories = CategoryModel::getCategory($getCatParams);
         require_once (ROOT.'/application/views/index.php');
 

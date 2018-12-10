@@ -13,12 +13,18 @@ class CategoryModel extends Model {
 
         $status = 1;
         $sort_order='ASC';
-        $parent_cat = 0;
+        $parent_cat = null;
         extract($params);
 
         $categoryList = array();
 
-        $result = $db->query("SELECT * FROM imarket_db.im_category WHERE status = $status AND parent_cat = $parent_cat "
+        if (is_null($parent_cat)){
+            $parent_cat_part=" ";
+        }else{
+            $parent_cat_part = " AND parent_cat = $parent_cat ";
+        }
+
+        $result = $db->query("SELECT * FROM imarket_db.im_category WHERE status = $status $parent_cat_part"
                 ." ORDER BY sort_order $sort_order");
 
         $i=0;
@@ -37,6 +43,19 @@ class CategoryModel extends Model {
             $i++;
         }
         return $categoryList;
+    }
+
+    public static function getCatByTag($tag){
+
+
+        $db = Db::getConnection();
+
+        $result =$db-> query('SELECT * '
+            .'FROM imarket_db.im_category '
+            .'WHERE tag =\''.$tag.'\'');
+
+        return $result->fetch();
+
     }
 
 

@@ -23,3 +23,22 @@ CREATE UNIQUE INDEX im_category_tag_uindex ON im_category (tag);
 INSERT INTO `im_category` (`id`, `name`, `description`, `parent_cat`, `sort_order`, `status`, `child_cat`,`image` ) VALUES (1, 'Ноутбуки', 'Описание ноутбуков', NULL, '0', '1', NULL,'public/image/завантаження.jpg');
 INSERT INTO `im_category` (`id`, `name`, `description`, `parent_cat`, `sort_order`, `status`, `child_cat`,`image`) VALUES (2, 'Смартфоны', 'Описание смартфонов', NULL, '0', '1', NULL,'public/image/завантаження (3).jpg');
 INSERT INTO `im_category` (`id`, `name`, `description`, `parent_cat`, `sort_order`, `status`, `child_cat`,`image`) VALUES (3, 'Планшетов', 'Описание Планшетов', NULL, '0', '1', NULL,'public/image/завантаження (6).jpg');
+
+CREATE TABLE im_product
+(
+    id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    name varchar(255) NOT NULL,
+    price int NOT NULL,
+    count int NOT NULL,
+    tag text NOT NULL,
+    status boolean DEFAULT 1 NOT NULL,
+    parent_cat int DEFAULT 0 NOT NULL,
+    image text,
+    description text
+    date_add TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+CREATE UNIQUE INDEX im_product_id_uindex ON im_product (id);
+CREATE UNIQUE INDEX im_product_name_uindex ON im_product (name);
+
+INSERT INTO `im_product` (`id`, `name`, `price`, `count`, `tag`, `status`, `parent_cat`, `image`, `description`, `date_add`) VALUES (NULL, 'Ноутбук Acer', '950', '1', 'Ноутбук_Acer', '1', '4', 'public/image/завантаження.jpg', 'Описание Ноутбук Acer', CURRENT_TIMESTAMP);
+INSERT INTO `im_product` (`id`, `name`, `price`, `count`, `tag`, `status`, `parent_cat`, `image`, `description`, `date_add`) VALUES (NULL, 'Ноутбук Lenovo', '1000', '50', 'Ноутбук_Lenovo', '1', '4', 'public/image/завантаження (3).jpg', 'Описание Ноутбук Lenovo', CURRENT_TIMESTAMP);

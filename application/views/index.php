@@ -11,10 +11,7 @@ require_once (ROOT.'/application/views/components/header.php'); ?>
 <main class="main">
     <div class="container">
         <div class="row">
-            <aside class="col-lg-3 col-sm-12">
-                сайд бар
-            </aside>
-            <div class="col-lg-9 col-sm-12">
+            <div class="col-lg-12 col-sm-12">
                 <?php foreach ($categories as $category){?>
                     <div class="cat_cart clearfix">
                         <h3><a href="<?php echo $getcurrentUrl.$category['tag']; ?>"><?php echo $category['name']; ?></a></h3>

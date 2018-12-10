@@ -21,7 +21,7 @@ class Db{
         $paramsPath = ROOT.'/application/configs/db_params.php';
         try{
             if(file_exists($paramsPath)){
-                $params = require_once ($paramsPath);
+                $params = require ($paramsPath);
             }else{
                 throw new Exception("Настройки db не найдены");
             }

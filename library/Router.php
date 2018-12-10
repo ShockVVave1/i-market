@@ -43,6 +43,9 @@ class Router
    public  function  run(){
        $uri = $this ->getUri();
 
+       $uri = urldecode($uri);
+
+       var_dump($uri);
        /**
         * TODO Убрать код при размещении на хостинге
         */
@@ -96,6 +99,8 @@ class Router
                //Создание экземпляра контроллера
                $controllerObject = new $controllerName();
 
+               $params=$this->checkPath($params);
+
                //Вызов метода
                $result = $controllerObject->$actionName($params);
 
@@ -104,5 +109,44 @@ class Router
                }
            }
        }
+   }
+
+   public function checkPath($params){
+
+       $arr= array();
+
+       var_dump($params);
+       $i=1;
+       foreach ($params as $param=>$value){
+
+           switch ($i){
+               case 1:{
+                   $cat = CategoryModel::getCatByTag($value);
+                       $arr['parent_cat'] = $cat['id'];
+                       $arr['parent_tag']=$value;
+                       break;
+
+               }
+               case 2:{
+                   $cat = CategoryModel::getCatByTag($value);
+                   if ($cat['parent_cat']==0){
+                       die();
+                   }else{
+                       $arr['child_tag']=$cat['tag'];
+                       $arr['parent_cat'] = $cat['id'];
+                       break;
+                   }
+               }
+               case 3:{
+
+               }
+
+           }
+
+        $i++;
+
+       }
+
+       return $arr;
    }
 }
