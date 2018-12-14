@@ -34,7 +34,6 @@ class SiteController extends Controller {
         $categories = CategoryModel::getCategory($getCatParams);
 
         //Подключение отображения категорий
-        require_once (ROOT.'/application/views/index.php');
-
+        require (ROOT.'/application/views/index.php');
     }
 }

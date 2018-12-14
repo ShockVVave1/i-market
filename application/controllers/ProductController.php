@@ -40,7 +40,7 @@ class ProductController extends Controller
 
         //Если такой продукт есть подключить отображение
         if($product){
-            require_once ROOT.'/application/views/product.php';
+            require ROOT.'/application/views/product.php';
         //Иначе перенаправить на 404
         }else{
             die();

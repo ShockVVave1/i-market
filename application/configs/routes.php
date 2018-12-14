@@ -9,6 +9,9 @@
 
 //Массив рутов
 $routes = array(
+
+    'user/register' => 'user/register',
+
     '([a-z a-я A-Z a-z _]+)/([a-z a-я A-Z a-z _]+)/([a-z a-я A-Z a-z _]+)((?:[?][a-z]+[=][a-z A-Z 0-9]+)+)'=>'product/index/$1/$2/$3',
     '([a-z a-я A-Z a-z _]+)/([a-z a-я A-Z a-z _]+)/([a-z a-я A-Z a-z _]+)'=>'product/index/$1/$2/$3',
     '([a-z a-я A-Z a-z _]+)/([a-z a-я A-Z a-z _]+)((?:[?][a-z]+[=][a-z A-Z 0-9]+)+)'=>'category/index/$1/$2',
@@ -19,6 +22,7 @@ $routes = array(
      * TODO при переносе на норма хостинг поменять '-market' на '/'
      */
     '-market'=>'site/index'
+
 
 );
 
