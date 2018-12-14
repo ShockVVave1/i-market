@@ -32,8 +32,17 @@ class UserModel
     public  static function checkName($name){
         if(strlen($name)>2){
             return true;
+        }else{
+            return false;
         }
-        return false;
+    }
+
+    public static function checkSymbols($name){
+        if(preg_match("#^[aA-zZ0-9-_]+$#",$name)){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -78,6 +87,100 @@ class UserModel
         if($result->fetchColumn())
             return true;
         return false;
+    }
+
+    /**
+     * @param $userId
+     * Авторизация пользователя
+     */
+    public  static function auth($userId){
+
+        $_SESSION['user'] = $userId;
+
+    }
+
+    /**
+     * @return mixed
+     * Проверка авторизованности пользователя c перенаправлением
+     */
+    public static function checkLogged(){
+
+        if(isset($_SESSION['user'])){
+            return $_SESSION['user'];
+        }
+
+        header("Location: /i-market/user/login");
+    }
+
+    /**
+     * @return bool
+     * Проверка авторизованности пользователя с возвращением флага
+     */
+    public static function isGuest(){
+
+        if(isset($_SESSION['user'])){
+            return true;
+        }
+        return false;
+
+    }
+
+    /**
+     * Функция разлогивания пользователя
+     */
+    public static function logout(){
+        if(isset($_SESSION['user'])){
+            unset($_SESSION['user']);
+        }
+    }
+
+    /**
+     * @param $email
+     * @param $password
+     * @return bool
+     * Аутентификация пользователя
+     */
+    public  static function checkUserDate($email,$password){
+
+        $db = DB::getConnection();
+
+        $sql = 'SELECT * FROM imarket_db.im_users WHERE  email = :email;';
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':email',$email, PDO::PARAM_STR);
+        $result->execute();
+
+        $user = $result->fetch();
+        if($user){
+            if( password_verify($password , $user['password'])){
+                return $user['id'];
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @param $userId
+     * @return mixed
+     * Получения данных пользователя по id
+     */
+    public static function getUserById($userId){
+
+
+        if($userId){
+            $db = DB::getConnection();
+
+            $sql='SELECT * FROM imarket_db.im_users WHERE id = :id';
+
+            $result = $db->prepare($sql);
+            $result -> bindParam(':id',$userId,PDO::PARAM_INT);
+
+            $result->setFetchMode(PDO::FETCH_ASSOC);
+            $result->execute();
+
+            return $result->fetch();
+        }
     }
 
 }

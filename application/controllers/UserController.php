@@ -10,7 +10,7 @@
  * Class UserController
  * Контроллер обеспечивающий работу с польщователями
  */
-class UserController
+class UserController extends Controller
 {
     /**
      * Функция регистрации нового пользователя
@@ -30,7 +30,11 @@ class UserController
             $errors=false;
 
             if(!UserModel::checkName($login)){
-                $errors[]='Имя не должно быть короче 2-х символов';
+                $errors[]='Логин не должно быть короче 2-х символов';
+            }
+
+            if(!UserModel::checkSymbols($login)){
+                $errors[]='Логин содержит не допутимые символы';
             }
 
             if(!UserModel::checkEmail($email)){
@@ -54,6 +58,49 @@ class UserController
 
             require ROOT.'/application/views/user/register.php';
 
+        return true;
+
+    }
+
+    public function actionLogin(){
+        $password='';
+        $email='';
+
+
+        if(isset($_POST['submit'])){
+            $password  = $_POST['password'];
+            $email = $_POST['email'];
+
+            $errors=false;
+
+            if(!UserModel::checkEmail($email)){
+                $errors[]='Неправильный email';
+            }
+
+            $userId = UserModel::checkUserDate($email,$password);
+
+            if($userId == false){
+                $errors[]='Неправильные данные для входа на сайт';
+            }else{
+                UserModel::auth($userId);
+
+                header("Location: /i-market/cabinet/");
+
+            }
+
+        }
+        require (ROOT.'/application/views/user/login.php');
+
+        return true;
+    }
+
+    /**
+     *  Функция выхода из авторизованного аккаунта
+     */
+    public function actionLogout(){
+
+        UserModel::logout();
+        header("Location: /i-market/user/login");
         return true;
 
     }

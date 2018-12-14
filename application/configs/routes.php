@@ -10,7 +10,12 @@
 //Массив рутов
 $routes = array(
 
+    'user/login' => 'user/login',
     'user/register' => 'user/register',
+    'user/logout' => 'user/logout',
+    'user/edit' => 'user/edit',
+
+    'cabinet' => 'cabinet/index',
 
     '([a-z a-я A-Z a-z _]+)/([a-z a-я A-Z a-z _]+)/([a-z a-я A-Z a-z _]+)((?:[?][a-z]+[=][a-z A-Z 0-9]+)+)'=>'product/index/$1/$2/$3',
     '([a-z a-я A-Z a-z _]+)/([a-z a-я A-Z a-z _]+)/([a-z a-я A-Z a-z _]+)'=>'product/index/$1/$2/$3',

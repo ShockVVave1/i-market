@@ -7,7 +7,7 @@
  */
 
 
-require_once (ROOT.'/application/views/components/header.php'); ?>
+require (ROOT.'/application/views/components/header.php'); ?>
 
 <main>
     <div class="container">
@@ -16,7 +16,7 @@ require_once (ROOT.'/application/views/components/header.php'); ?>
                 <h2>Регистрация на сайте</h2>
                 <?php if(isset($result)){?>
                     <p>Вы зарегестрированы!</p>
-                <?php } ?>
+                <?php }else{ ?>
                 <?php if(isset($errors)&&is_array($errors)){?>
                     <ul>
                         <?php foreach ($errors as $error){ ?>
@@ -30,10 +30,11 @@ require_once (ROOT.'/application/views/components/header.php'); ?>
                     <input type="password" name="password" placeholder="password" value="<?php echo $password;?>">
                     <input type="submit" name="submit" value="Отправить" class="btn btn-default" placeholder="">
                 </form>
+                <?php } ?>
             </div>
         </div>
     </div>
 
 
 </main>
-<?php require_once (ROOT.'/application/views/components/footer.php'); ?>
+<?php require (ROOT.'/application/views/components/footer.php'); ?>

@@ -30,10 +30,13 @@
                             </div>
                             <div class="col-lg-9 col-sm-12">
                                 <ul id="main-menu">
-                                    <li><a href="">пункт 1</a></li>
-                                    <li><a href="">пункт 2</a></li>
-                                    <li><a href="">пункт 3</a></li>
-                                    <li><a href="">пункт 4</a></li>
+                                    <?php  if(UserModel::isGuest()){?>
+                                        <li><a href="cabinet">Кабинет</a></li>
+                                        <li><a href="user/logout">Выход</a></li>
+                                    <?php }else{?>
+                                        <li><a href="user/register">Регистрация</a></li>
+                                        <li><a href="user/login">Вход</a></li>
+                                    <?php } ?>
                                 </ul>
                             </div>
                         </nav>

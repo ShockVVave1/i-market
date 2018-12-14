@@ -58,8 +58,10 @@ class Router
                //количество подмасок в пути
                $mask_count = substr_count($path, '$');
 
+
                //количество параметров в запросе
                $param_count=substr_count($uri,'?');
+
 
                //если есть параметры добавляем в путь подмаску
                if($param_count > 0){
