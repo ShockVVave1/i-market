@@ -15,6 +15,7 @@ class Router
    //переменная рутов
    private $routes;
 
+
    public function __construct(){
 
        $routes_path = ROOT.'/application/configs/routes.php';
@@ -45,7 +46,6 @@ class Router
 
        $uri = urldecode($uri);
 
-       var_dump($uri);
        /**
         * TODO Убрать код при размещении на хостинге
         */
@@ -53,7 +53,6 @@ class Router
 
        //Цикл проверки запроса на совпадение с рутами
        foreach ($this->routes as $uriPattern => $path){
-
            if(preg_match('~^'.$uriPattern.'$~', $uri)){
 
                //количество подмасок в пути
@@ -99,8 +98,6 @@ class Router
                //Создание экземпляра контроллера
                $controllerObject = new $controllerName();
 
-               $params=$this->checkPath($params);
-
                //Вызов метода
                $result = $controllerObject->$actionName($params);
 
@@ -111,42 +108,5 @@ class Router
        }
    }
 
-   public function checkPath($params){
 
-       $arr= array();
-
-       var_dump($params);
-       $i=1;
-       foreach ($params as $param=>$value){
-
-           switch ($i){
-               case 1:{
-                   $cat = CategoryModel::getCatByTag($value);
-                       $arr['parent_cat'] = $cat['id'];
-                       $arr['parent_tag']=$value;
-                       break;
-
-               }
-               case 2:{
-                   $cat = CategoryModel::getCatByTag($value);
-                   if ($cat['parent_cat']==0){
-                       die();
-                   }else{
-                       $arr['child_tag']=$cat['tag'];
-                       $arr['parent_cat'] = $cat['id'];
-                       break;
-                   }
-               }
-               case 3:{
-
-               }
-
-           }
-
-        $i++;
-
-       }
-
-       return $arr;
-   }
 }

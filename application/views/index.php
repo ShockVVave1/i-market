@@ -6,6 +6,10 @@
  * Time: 12:41
  */
 
+/**
+ * Получение отображения главной страницы
+ */
+
 require_once (ROOT.'/application/views/components/header.php'); ?>
 
 <main class="main">

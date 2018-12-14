@@ -6,6 +6,10 @@
  * Time: 16:26
  */
 
+/**
+ * Class Model
+ * Класс предок Моделей
+ */
 class Model
 {
 

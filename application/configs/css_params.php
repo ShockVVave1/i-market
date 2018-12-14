@@ -11,6 +11,9 @@
  */
 $pubCssDir = '/i-market/public/css';
 
+/**
+ * Возвращает массив поключенных стилей для header и footer
+ */
 return array(
     'header' => array(
         'bootstrap' => $pubCssDir.'/bootstrap/bootstrap.min.css',

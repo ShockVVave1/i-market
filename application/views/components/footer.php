@@ -5,6 +5,10 @@
  * Date: 07.12.2018
  * Time: 12:55
  */
+
+/**
+ * Получение html кода футера
+ */
 ?>      </div>
         <footer class="footer">
             <div class="container">

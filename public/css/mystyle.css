@@ -45,7 +45,15 @@
     content:'';
     clear: both;
     display: block;
-
 }
 
+.breadcrumb ul{
+    margin-bottom: 0;
+}
+
+.breadcrumb li{
+    display: inline-block;
+    margin-left: 15px   ;
+
+}
 

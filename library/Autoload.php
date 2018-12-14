@@ -22,6 +22,7 @@ function component_autoload($class_name){
 
     );
 
+    //Перебор возможных категорий
     foreach ($array_paths as $path){
         $path = ROOT.$path.$class_name.'.php';
 

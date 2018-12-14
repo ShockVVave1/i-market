@@ -6,6 +6,14 @@
  * Time: 13:13
  */
 
+/**
+ * Переменная с дирректорией до дирректории скриптов
+ */
+$pubJsDir = '/i-market/public/js';
+
+/**
+ * Возвращает массив поключенных скриптов для header и footer
+ */
 return array(
     $header = array(
 
