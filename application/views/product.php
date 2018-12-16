@@ -30,7 +30,7 @@ require_once (ROOT.'/application/views/components/header.php'); ?>
                     </div>
                     <div class="col-lg-2 col-sm-12" >
                         <div class="price">Цена:<?php echo $product['price']; ?></div>
-                        <a href="">В корзину</a>
+                        <div><a class='add-button btn btn-success '  onclick ="event.preventDefault();ajaxSend(<?php echo $product['id']; ?>)" href="cart/add/<?php echo $product['id']; ?>">В корзину</a></div>
                     </div>
                 </div>
             </div>

@@ -55,6 +55,7 @@ class Router
        foreach ($this->routes as $uriPattern => $path){
            if(preg_match('~^'.$uriPattern.'$~', $uri)){
 
+
                //количество подмасок в пути
                $mask_count = substr_count($path, '$');
 
@@ -104,7 +105,7 @@ class Router
                $result = $controllerObject->$actionName($params);
 
                if($result!=null){
-                   break;
+                    die();
                }
            }
        }

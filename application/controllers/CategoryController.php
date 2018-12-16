@@ -43,7 +43,7 @@ class CategoryController extends Controller{
         //Получение подробной информации о категориях-детях
         $categories = CategoryModel::getCategory($getCatParams);
         //Получение информации о категориях для Меню категорий
-        $allCategories = CategoryModel::getCategoryMenu();
+        $allCategories = CategoryModel::getCategoryMenu(array('status' => 1));
 
         //Подключение хлебных крошек
         $breadcrumbs = function ($params){
@@ -66,6 +66,8 @@ class CategoryController extends Controller{
 
         //Подключение отображения категорий
         require_once ROOT.'/application/views/category.php';
+
+        return true;
 
     }
 

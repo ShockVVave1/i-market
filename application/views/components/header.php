@@ -29,6 +29,7 @@
                                 <a href="/i-market/">LOGO</a>
                             </div>
                             <div class="col-lg-9 col-sm-12">
+                                <div class="cart"><a id="cart" href="cart">Корзина (<?php echo CartModel::getCount();?>)</a></div>
                                 <ul id="main-menu">
                                     <?php  if(UserModel::isGuest()){?>
                                         <li><a href="cabinet">Кабинет</a></li>

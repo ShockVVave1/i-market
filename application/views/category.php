@@ -9,6 +9,7 @@
 /**
  * Получение отображения категорий
  */
+
 require_once (ROOT.'/application/views/components/header.php'); ?>
 
     <main class="main">
@@ -38,7 +39,8 @@ require_once (ROOT.'/application/views/components/header.php'); ?>
                                       <a class='cat_img' href="<?php echo '/i-market/'.$tags[count($tags)-2].'/'.$tags[count($tags)-1].'/'.$product['tag']; ?>">
                                           <img src="<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>">
                                       </a>
-                                      <p><?php echo $product['description']; ?></p>
+                                      <p>Цена:<?php echo $product['price']; ?></p>
+                                      <div><a class='add-button btn btn-success '  onclick ="event.preventDefault();ajaxSend(<?php echo $product['id']; ?>)" href="cart/add/<?php echo $product['id']; ?>">В корзину</a></div>
                                   </div>
                               </div>
 

@@ -11,7 +11,7 @@
  * Класс предок для контроллеров
  * Содержит общие функции контроллеров
  */
-class Controller
+abstract class Controller
 {
 
     /**
@@ -46,8 +46,9 @@ class Controller
                 yield CategoryModel::getCatByTag($tag);
             })($var) as $obj){
 
+
                 //Если такоей объект существует записывает данные
-                if ($obj){
+                if (is_array($obj)){
                     //Меняеться переменная участвующая в условии цикла
                     $parent_cat=$obj['parent_cat'];
 
@@ -69,6 +70,19 @@ class Controller
         $arr['ids']=array_reverse($arr['ids']);
 
         return $arr;
+    }
+
+    public static function checkAdmin(){
+
+        $userId = UserModel::checkLogged();
+
+        $user = UserModel::getUserById($userId);
+
+        if($user['role'] = 'admin'){
+            return true;
+        }
+
+        die('Access denied');
     }
 
 }

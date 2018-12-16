@@ -17,8 +17,9 @@ $pubJsDir = '/i-market/public/js';
 return array(
     $header = array(
 
+
     ),
     $footer = array(
-
+        'myjs' => $pubJsDir.'/myjs.js'
     )
 );

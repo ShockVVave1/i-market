@@ -66,7 +66,7 @@ class Common{
 
         if(!is_null($$where['js'])){
             foreach ($$where['js'] as $script => $scriptSrc){?>
-                <script src="<?php echo $scriptSrc; ?>" type="text/javascript">
+                <script src="<?php echo $scriptSrc; ?>" type="text/javascript"></script>
             <?php }
         }
 

@@ -13,8 +13,8 @@ class UserModel
 
         $db = DB::getConnection();
 
-        $sql = 'INSERT INTO imarket_db.im_users (login, email, password) '
-            .'VALUES (:login, :email, :password)';
+        $sql = 'INSERT INTO imarket_db.im_users (login, email, password, role) '
+            .'VALUES (:login, :email, :password, :role)';
 
         $result = $db->prepare($sql);
         $result->bindParam(':login',$login, PDO::PARAM_STR);
@@ -67,6 +67,19 @@ class UserModel
             return true;
         }
         return false;
+    }
+
+    /**
+     * @param $phone
+     * @return bool
+     * Функция проверки мобильного телефона
+     */
+    public  static function checkPhone($phone){
+        if (preg_match('/((8|\+7)-?)?\(?\d{3,5}\)?-?\d{1}-?\d{1}-?\d{1}-?\d{1}-?\d{1}((-?\d{1})?-?\d{1})?/', $phone)) {
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -132,6 +145,8 @@ class UserModel
         if(isset($_SESSION['user'])){
             unset($_SESSION['user']);
         }
+
+        return true;
     }
 
     /**

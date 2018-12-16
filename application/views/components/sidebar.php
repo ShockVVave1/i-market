@@ -14,7 +14,7 @@
 <h3>Категории</h3>
 <ul class="sidemenu">
 
-    <?php $i=0;
+    <?php
     $curerent_url = '/i-market';
     foreach($params['tags'] as $tag){
         $curerent_url.='/'.$tag;
@@ -28,7 +28,6 @@
                 <?php }else{ ?>
                     <?php echo $category['name']; ?>
                 <?php } ?>
-                <?php  if($category['childs']){?>
                     <ul>
                     <?php foreach ($allCategories as $child){
                         if ($category['id']==intval($child['parent_cat'])){ ?>
@@ -40,9 +39,8 @@
                         <?php }
                     }?>
                     </ul>
-                <?php }?>
             </li>
         <?php }?>
-    <?php $i++;
+    <?php
     }?>
 </ul>

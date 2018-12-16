@@ -10,7 +10,7 @@
  * Class Model
  * Класс предок Моделей
  */
-class Model
+abstract class Model
 {
 
 }
